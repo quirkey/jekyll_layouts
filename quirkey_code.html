@@ -7,7 +7,7 @@
 
   <title>.: Quirkey.com :: {{ page.title }} :: Code :: Quirkey NYC, LLC :: Aaron Quint :: Web Developer :: Brooklyn, NY :.</title>
   <link rel="stylesheet" href="/stylesheets/quirkey.css" type="text/css" media="screen" charset="utf-8" />
-  {% if !page.github_name %}
+  {% if page.github_name == 'home' %}
   <link rel="stylesheet" href="/stylesheets/home.css" type="text/css" media="screen" charset="utf-8" />
   {% else %}
   <link rel="stylesheet" href="/stylesheets/pages.css" type="text/css" media="screen" charset="utf-8" />
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="/stylesheets/syntax.css" type="text/css" media="screen" charset="utf-8" />
   <script src="/javascripts/jquery.js" type="text/javascript" charset="utf-8"></script>
   <script src="/javascripts/quirkey.js" type="text/javascript" charset="utf-8"></script>
-  {% if !page.github_name %}
+  {% if page.github_name == 'home' %}
   <script src="/javascripts/github.js" type="text/javascript" charset="utf-8"></script>
   {% endif %}
 </head>
@@ -52,7 +52,7 @@
         {% endif %}
       <div id="content">
         {{ content }}
-        {% if page.github_name %}
+        {% if page.github_name != 'home' %}
         <h3 id="installing">Installing</h3>
         <div class="highlight"><pre>sudo gem install static_model
         </pre></div>
