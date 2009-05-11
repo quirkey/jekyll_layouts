@@ -5,19 +5,12 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-  <title>.: Quirkey.com :: Code :: {{ page.title }} :: Quirkey NYC, LLC :: Aaron Quint :: Web Developer :: Brooklyn, NY :.</title>
+  <title>.: Quirkey.com :: Code :: {{ config.title }} :: Quirkey NYC, LLC :: Aaron Quint :: Web Developer :: Brooklyn, NY :.</title>
   <link rel="stylesheet" href="/stylesheets/quirkey.css" type="text/css" media="screen" charset="utf-8" />
-  {% if page.github_name == 'home' %}
-  <link rel="stylesheet" href="/stylesheets/home.css" type="text/css" media="screen" charset="utf-8" />
-  {% else %}
   <link rel="stylesheet" href="/stylesheets/pages.css" type="text/css" media="screen" charset="utf-8" />
-  {% endif %}
   <link rel="stylesheet" href="/stylesheets/syntax.css" type="text/css" media="screen" charset="utf-8" />
   <script src="/javascripts/jquery.js" type="text/javascript" charset="utf-8"></script>
   <script src="/javascripts/quirkey.js" type="text/javascript" charset="utf-8"></script>
-  {% if page.github_name == 'home' %}
-  <script src="/javascripts/github.js" type="text/javascript" charset="utf-8"></script>
-  {% endif %}
 </head>
 
 <body>
@@ -43,52 +36,27 @@
       {% if page.nav %}
       <ul id="pagenav">
         {% for nav in page.nav %}
-        <li><a href="{{ nav['link'] }}">{{ nav['name'] }}</a></li>
+        <li>
+            <a href="{{ nav['link'] }}">{{ nav['name'] }}</a>
+            {% if nav.sub %}
+            <ul>
+              {% for sub in nav.sub %}
+                <li><a href="{{ sub['link'] }}">{{ sub['name'] }}</a></li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+        </li>
         {% endfor %}
-        {% if page.gem != false %}
-        <li><a href="#installing">Installing</a></li>
-        {% endif %}
-        {% if page.contact != false %}
-        <li><a href="#requests">Bugs/Feature<br />Requests</a></li>
-        <li><a href="#contact">Contact</a></li>
-        {% endif %}
       </ul>
       {% endif %}
       <div id="content">
         {{ content }}
-        {% if page.github_name != 'home' %}
-        {% if page.gem != false %}
-        <h3 id="installing">Installing</h3>
-        <div class="highlight"><pre>sudo gem install {{ page.github_name }}
-        </pre></div>
-        <p>Or directly from github:</p>
-        <div class="highlight"><pre>sudo gem install quirkey-{{ page.github_name }} -s http://gems.github.com
-        </pre></div>
-        <p>Github in thier infinite awesomeness also lets you download the source in multiple formats.</p>
-        <div class="download">
-          <a href="http://github.com/quirkey/{{ page.github_name }}/zipball/master">
-            <img border="0" width="90" src="http://github.com/images/modules/download/zip.png" />
-          </a>
-          <a href="http://github.com/quirkey/{{ page.github_name }}/tarball/master">
-            <img border="0" width="90" src="http://github.com/images/modules/download/tar.png" />
-          </a>
-        </div>
-        {% endif %}
-        {% if page.contact != false %}
-        <h3 id="requests">Bugs/Feature Requests</h3>
-        <p>The full and most up to date source is at github:</p>
-        <p><a href="http://github.com/quirkey/{{ page.github_name }}/">http://github.com/quirkey/{{ page.github_name }}/</a></p>
-        <p>You can clone or fork from there to fix or break the code.</p>
-        <p>I&#8217;m happy to take feature requests/bug reports. Just email me (contact below) or message me on github.</p>
-        <h3 id="license">License</h3>
-        <p>This code is free to use under the terms of the <a href="http://www.opensource.org/licenses/mit-license.php"><span class="caps">MIT</span> license.</a></p>
-        <h3 id="contact">Contact</h3>
-        <p>Feel free to email me at aaron at quirkey dot com.</p>
-        <p>Please check out my <a href="http://quirkey.com/blog">blog.</a></p>
-        <p>If you like or use this library &#8211; I don&#8217;t want donations &#8211; but you can <a href="http://www.workingwithrails.com/person/8362-aaron-quint">recommend me on workingwithrails.com</a> or hire me to work on your next project.</p>
-        {% endif %}
-        {% endif %}
       </div>
+    </div>
+    <div id="contact">
+      <p>Feel free to email me at aaron at quirkey dot com.</p>
+      <p>Please check out my <a href="http://quirkey.com/blog">blog.</a></p>
+      <p>If you like or use this library &#8211; I don&#8217;t want donations &#8211; but you can <a href="http://www.workingwithrails.com/person/8362-aaron-quint">recommend me on workingwithrails.com</a> or hire me to work on your next project.</p>
     </div>
     <div id="footer">
       <p class="quirkey_links">Quirkey<span>|</span><a href="http://www.quirkey.com" class="q_com">.com</a><span>|</span><a href="http://portfolio.quirkey.com" class="q_portfolio">Portfolio</a><span>|</span><a href="http://code.quirkey.com" class="q_code">Code</a><span>|</span><a href="http://log.quirkey.com" class="q_log">Log</a><span>|</span><a href="http://www.quirkey.com/blog/" class="q_blog">Blog</a></p>
